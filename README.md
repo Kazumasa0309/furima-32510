@@ -35,7 +35,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :orders
+- has_one :order
 
 ## orders テーブル
 
@@ -47,10 +47,10 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :order
+- belongs_to :item
 - has_one :receiver
 
-## receiver テーブル
+## receivers テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
