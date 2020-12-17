@@ -7,10 +7,10 @@
 | nickname           | string | null: false               |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
-| first-name         | string | null: false               |
-| last-name          | string | null: false               |
-| first-name-kana    | string | null: false               |
-| last-name-kana     | string | null: false               |
+| first_name         | string | null: false               |
+| last_name          | string | null: false               |
+| first_name_kana    | string | null: false               |
+| last_name_kana     | string | null: false               |
 | birthday           | date   | null: false               |
 
 ### Association
@@ -20,18 +20,21 @@
 
 ## items テーブル
 
-| Column      | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| user_id     | references | null: false, foreign_key: true |
-| name        | string     | null: false                    |
-| explanation | text       | null: false                    |
-| category_id | integer    | null: false                    |
-| state       | string     | null: false                    |
-| price       | integer    | null: false                    |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| user            | references | null: false, foreign_key: true |
+| name            | string     | null: false                    |
+| explanation     | text       | null: false                    |
+| category_id     | integer    | null: false                    |
+| status_id       | integer    | null: false                    |
+| delivery_fee_id | integer    | null: false                    |
+| prefecture_id   | integer    | null: false                    |
+| delivery_day_id | integer    | null: false                    |
+| price           | integer    | null: false                    |
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
 - has_one :orders
 
 ## orders テーブル
@@ -39,25 +42,26 @@
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | user   | references | null: false, foreign_key: true |
-| items  | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :orders
+- belongs_to :user
+- belongs_to :order
 - has_one :receiver
 
 ## receiver テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| orders_id    | references | null: false, foreign_key: true |
-| postal-code  | string     | null: false                    |
-| prefecture   | string     | null: false                    |
-| municipality | string     | null: false                    |
-| address      | string     | null: false                    |
-| phone-number | string     | null: false                    |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| order         | references | null: false, foreign_key: true |
+| postal_code   | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| municipality  | string     | null: false                    |
+| address       | string     | null: false                    |
+| building      | string     |                                |
+| phone_number  | string     | null: false                    |
 
 ### Association
 
-- belongs_to :orders
+- belongs_to :order
