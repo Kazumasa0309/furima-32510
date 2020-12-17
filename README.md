@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column          | Type   | Options     |
-| --------------- | ------ | ----------- |
-| nickname        | string | null: false |
-| email           | string | null: false |
-| password        | string | null: false |
-| first-name      | string | null: false |
-| last-name       | string | null: false |
-| first-name-kana | string | null: false |
-| last-name-kana  | string | null: false |
-| birthday        | date   | null: false |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| first-name         | string | null: false               |
+| last-name          | string | null: false               |
+| first-name-kana    | string | null: false               |
+| last-name-kana     | string | null: false               |
+| birthday           | date   | null: false               |
 
 ### Association
 
@@ -25,10 +25,9 @@
 | user_id     | references | null: false, foreign_key: true |
 | name        | string     | null: false                    |
 | explanation | text       | null: false                    |
-| category    | string     | null: false                    |
+| category_id | integer    | null: false                    |
 | state       | string     | null: false                    |
 | price       | integer    | null: false                    |
-| order-check | boolean    |                                |
 
 ### Association
 
@@ -37,10 +36,10 @@
 
 ## orders テーブル
 
-| Column    | Type       | Options                        |
-| --------- | ---------- | ------------------------------ |
-| user_id   | references | null: false, foreign_key: true |
-| items_id  | references | null: false, foreign_key: true |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| items  | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -57,7 +56,7 @@
 | prefecture   | string     | null: false                    |
 | municipality | string     | null: false                    |
 | address      | string     | null: false                    |
-| phone-number | integer    | null: false                    |
+| phone-number | string     | null: false                    |
 
 ### Association
 
