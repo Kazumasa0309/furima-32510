@@ -4,13 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  valid_password_hankaku = /\A[a-z0-9]+\z/i
   valid_password_zenkaku = /\A[ぁ-んァ-ン一-龥]/
   valid_password_zenkaku_kana = /\A[ァ-ヶー－]+\z/
   with_options presence: true do
     validates :nickname
-    validates :email,              uniqueness: true
-    validates :encrypted_password, length: { minimum: 6 }, format: { with: valid_password_hankaku }
+    validates :password,           format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,}\z/ }
     validates :first_name,         format: { with: valid_password_zenkaku }
     validates :last_name,          format: { with: valid_password_zenkaku }
     validates :first_name_kana,    format: { with: valid_password_zenkaku_kana }
