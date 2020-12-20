@@ -11,7 +11,7 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :user
-    validates :name
+    validates :name,            length: { maximum: 40 }
     validates :explanation
     validates :category_id,     numericality: { other_than: 1 }
     validates :status_id,       numericality: { other_than: 1 }
