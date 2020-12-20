@@ -13,6 +13,12 @@ RSpec.describe Item, type: :model do
     end
 
     context '商品出品:失敗パターン' do
+      it 'image:空パターン' do
+        @item.image = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Image can't be blank")
+      end
+
       it 'name:空パターン' do
         @item.name = nil
         @item.valid?
@@ -68,7 +74,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'price:300円未満パターン' do
-        @item.price = 200
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
       end

@@ -11,6 +11,7 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :user
+    validates :image
     validates :name,            length: { maximum: 40 }
     validates :explanation
     with_options numericality: { other_than: 1 } do
