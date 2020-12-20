@@ -4,13 +4,14 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to :category
+    belongs_to :status
 
   with_options presence: true do
     validates :user
     validates :name
     validates :explanation
-    validates :category_id,       numericality: { other_than: 1 } 
-    validates :status_id
+    validates :category_id,     numericality: { other_than: 1 }
+    validates :status_id,       numericality: { other_than: 1 }
     validates :delivery_fee_id
     validates :prefecture_id
     validates :delivery_day_id
