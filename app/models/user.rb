@@ -8,7 +8,7 @@ class User < ApplicationRecord
   valid_password_zenkaku_kana = /\A[ァ-ヶー－]+\z/
   with_options presence: true do
     validates :nickname
-    validates :password,           format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
+    validates :password,           format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
     validates :first_name,         format: { with: valid_password_zenkaku }
     validates :last_name,          format: { with: valid_password_zenkaku }
     validates :first_name_kana,    format: { with: valid_password_zenkaku_kana }

@@ -28,7 +28,7 @@ RSpec.describe Item, type: :model do
       it 'name:40文字オーバー' do
         @item.name = 'あああああいいいいいうううううえええええおおおおおあああああいいいいいうううううえええええおおおおお'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Name is too long (maximum is 40 characters)')
+        expect(@item.errors.full_messages).to include("Name is too long (maximum is 40 characters)")
       end
 
       it 'explanation:空パターン' do
@@ -40,31 +40,31 @@ RSpec.describe Item, type: :model do
       it 'category_id:1パターン(未選択)' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Category must be other than 1')
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
 
       it 'status_id:1パターン(未選択)' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Status must be other than 1')
+        expect(@item.errors.full_messages).to include("Status must be other than 1")
       end
 
       it 'delivery_fee_id:1パターン(未選択)' do
         @item.delivery_fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Delivery fee must be other than 1')
+        expect(@item.errors.full_messages).to include("Delivery fee must be other than 1")
       end
 
       it 'prefecture_id:1パターン(未選択)' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
+        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
       end
 
       it 'delivery_day_id:1パターン(未選択)' do
         @item.delivery_day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Delivery day must be other than 1')
+        expect(@item.errors.full_messages).to include("Delivery day must be other than 1")
       end
 
       it 'price:空パターン' do
@@ -76,13 +76,13 @@ RSpec.describe Item, type: :model do
       it 'price:300円未満パターン' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
+        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
       end
 
       it 'price:9999999円超えパターン' do
-        @item.price = 10_000_000
+        @item.price = 10000000
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
+        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
       end
     end
   end
