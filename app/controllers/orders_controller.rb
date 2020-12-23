@@ -1,19 +1,18 @@
 class OrdersController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
-  end
-
-  def new
     @order_receiver = OrderReceiver.new
   end
  
   def create
     @order_receiver = OrderReceiver.new(order_params)
+    # binding.pry
      if @order_receiver.valid?
        @order_receiver.save
        redirect_to action: :index
      else
-       render action: :new
+       @item = Item.find(params[:item_id])
+       render action: :index
      end
   end
  
