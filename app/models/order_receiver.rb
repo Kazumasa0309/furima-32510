@@ -1,6 +1,6 @@
 class OrderReceiver
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :order, :postal_code, :prefecture_id, :municipality, :address, :building, :phone_number, :token
+  attr_accessor :user_id, :item_id, :order_id, :postal_code, :prefecture_id, :municipality, :address, :building, :phone_number, :token
 
   with_options presence: true do
     # tokenのバリデーション
