@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
      if @order_receiver.valid?
        pay_item
        @order_receiver.save
-       redirect_to action: :index
+       redirect_to root_path
      else
        @item = Item.find(params[:item_id])
        render action: :index
