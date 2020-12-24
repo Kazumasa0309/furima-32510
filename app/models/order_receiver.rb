@@ -3,17 +3,19 @@ class OrderReceiver
   attr_accessor :user_id, :item_id, :order, :postal_code, :prefecture_id, :municipality, :address, :building, :phone_number, :token
 
   with_options presence: true do
+    # tokenのバリデーション
+    validates :token
     # orderモデルのバリデーション
-    # validates :user
-    # validates :item
+    validates :user_id
+    validates :item_id
     # receiverモデルのバリデーション
-    # validates :order
-    validates :postal_code
+    validates :order_id
+    validates :postal_code,   format: { with: /\A\d{3}[-]\d{4}\z/ }
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :municipality
     validates :address
     # validates :building
-    validates :phone_number
+    validates :phone_number,  format: { with: /\A\d{,11}\z/ }
   end
 
   def save
