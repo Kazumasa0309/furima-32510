@@ -31,12 +31,6 @@ RSpec.describe OrderReceiver, type: :model do
         expect(@order_receiver.errors.full_messages).to include("Item can't be blank")
       end
 
-      it 'order_id:空パターン' do
-        @order_receiver.order_id = nil
-        @order_receiver.valid?
-        expect(@order_receiver.errors.full_messages).to include("Order can't be blank")
-      end
-
       it 'postal_code:空パターン' do
         @order_receiver.postal_code = nil
         @order_receiver.valid?
