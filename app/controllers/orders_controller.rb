@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
   end
 
   def move_to_index
-    if (user_signed_in? && current_user.id == @item.user_id) || (user_signed_in? && !@order.empty? )
+    if (user_signed_in? && current_user.id == @item.user_id) || (user_signed_in? && !@order.empty?)
       redirect_to root_path
     end
   end
