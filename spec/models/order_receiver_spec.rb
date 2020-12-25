@@ -5,6 +5,7 @@ RSpec.describe OrderReceiver, type: :model do
     @user = FactoryBot.create(:user)  # userのインスタンス生成
     @item = FactoryBot.create(:item)  # itemのインスタンス生成
     @order_receiver = FactoryBot.build(:order_receiver, user_id: @user.id , item_id: @item.id)  # order_receiverのインスタンス生成
+    sleep 1
   end
 
   describe '商品購入機能' do
