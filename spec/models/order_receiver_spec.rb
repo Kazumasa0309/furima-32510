@@ -3,15 +3,21 @@ require 'rails_helper'
 RSpec.describe OrderReceiver, type: :model do
   before do
     @order_receiver = FactoryBot.build(:order_receiver)  # order_receiverのインスタンス生成
+    @user = FactoryBot.build(:user)  # userのインスタンス生成
+    @item = FactoryBot.build(:item)  # itemのインスタンス生成
   end
 
   describe '商品購入機能' do
     context '商品購入:成功パターン' do
       it 'FactoryBotの内容通りならば新規登録できる' do
+        @order_receiver.user_id = @user.id
+        @order_receiver.item_id = @item.id
         expect(@order_receiver).to be_valid
       end
 
       it 'buildingが空でも新規登録できる' do
+        @order_receiver.user_id = @user.id
+        @order_receiver.item_id = @item.id
         @order_receiver.building = nil
         expect(@order_receiver).to be_valid
       end
