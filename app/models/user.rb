@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :items
+  has_many :orders
+
   valid_password_zenkaku = /\A[ぁ-んァ-ン一-龥]/
   valid_password_zenkaku_kana = /\A[ァ-ヶー－]+\z/
   with_options presence: true do
