@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
   private
    # 全てのストロングパラメーターを1つに統合
   def order_params
-   params.require(:order_receiver).permit(:order, :postal_code, :prefecture_id, :municipality, :address, :building, :phone_number).merge(item_id: params[:item_id], token: params[:token], user_id: current_user.id)
+   params.require(:order_receiver).permit(:postal_code, :prefecture_id, :municipality, :address, :building, :phone_number).merge(item_id: params[:item_id], token: params[:token], user_id: current_user.id)
   end
 
   def pay_item

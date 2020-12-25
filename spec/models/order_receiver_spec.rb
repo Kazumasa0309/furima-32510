@@ -17,7 +17,6 @@ RSpec.describe OrderReceiver, type: :model do
         @order_receiver.building = nil
         expect(@order_receiver).to be_valid
       end
-
     end
 
     context '商品購入:失敗パターン' do
@@ -57,6 +56,12 @@ RSpec.describe OrderReceiver, type: :model do
         expect(@order_receiver.errors.full_messages).to include("Postal code is invalid")
       end
 
+      it 'prefecture_id:空パターン' do
+        @order_receiver.prefecture_id = nil
+        @order_receiver.valid?
+        expect(@order_receiver.errors.full_messages).to include("Prefecture can't be blank")
+      end
+
       it 'prefecture_id:1パターン(未選択)' do
         @order_receiver.prefecture_id = 1
         @order_receiver.valid?
@@ -83,6 +88,12 @@ RSpec.describe OrderReceiver, type: :model do
 
       it 'phone_number:11桁オーバーパターン' do
         @order_receiver.phone_number = "090123456789"
+        @order_receiver.valid?
+        expect(@order_receiver.errors.full_messages).to include("Phone number is invalid")
+      end
+
+      it 'phone_number:英数字混合パターン' do
+        @order_receiver.phone_number = "090aaaa56789"
         @order_receiver.valid?
         expect(@order_receiver.errors.full_messages).to include("Phone number is invalid")
       end
