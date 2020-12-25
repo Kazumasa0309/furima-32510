@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
 
   def index
     @order_receiver = OrderReceiver.new
-    @order = Order.where(item_id: params[:item_id])
     move_to_index
   end
  
@@ -39,7 +38,7 @@ class OrdersController < ApplicationController
   end
 
   def move_to_index
-    if current_user.id == @item.user_id || @order.present?
+    if current_user.id == @item.user_id || @item.order.present?
       redirect_to root_path
     end
   end
