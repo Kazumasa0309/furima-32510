@@ -15,7 +15,6 @@ class OrdersController < ApplicationController
        @order_receiver.save
        redirect_to root_path
      else
-       @item = Item.find(params[:item_id])
        render action: :index
      end
   end
@@ -40,7 +39,7 @@ class OrdersController < ApplicationController
   end
 
   def move_to_index
-    if (user_signed_in? && current_user.id == @item.user_id) || (user_signed_in? && !@order.empty?)
+    if current_user.id == @item.user_id || @order.present?
       redirect_to root_path
     end
   end

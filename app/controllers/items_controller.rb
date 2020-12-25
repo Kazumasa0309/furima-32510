@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order(id: :DESC)
-    # @orders = Order.all
   end
 
   def new
@@ -22,7 +21,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # @order = Order.where(item_id: @item.id)
   end
 
   def edit

@@ -10,6 +10,12 @@ RSpec.describe OrderReceiver, type: :model do
       it 'FactoryBotの内容通りならば新規登録できる' do
         expect(@order_receiver).to be_valid
       end
+
+      it 'buildingが空でも新規登録できる' do
+        @order_receiver.building = nil
+        expect(@order_receiver).to be_valid
+      end
+
     end
 
     context '商品購入:失敗パターン' do

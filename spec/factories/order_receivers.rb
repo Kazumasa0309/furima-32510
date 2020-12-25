@@ -8,6 +8,7 @@ FactoryBot.define do
     prefecture_id { Faker::Number.between(from: 2, to: 48) }
     municipality  {"Adachi-ku"}
     address       { "Ayase9-99-9" }
+    building      { "AyaseBill" }
     phone_number  { "09012345678" }
   end
 end
