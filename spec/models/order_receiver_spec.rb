@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe OrderReceiver, type: :model do
   before do
-    @user = FactoryBot.build(:user)  # userのインスタンス生成
-    @item = FactoryBot.build(:item)  # itemのインスタンス生成
+    @user = FactoryBot.create(:user)  # userのインスタンス生成
+    @item = FactoryBot.create(:item)  # itemのインスタンス生成
     @order_receiver = FactoryBot.build(:order_receiver, user_id: @user.id , item_id: @item.id)  # order_receiverのインスタンス生成
   end
 
